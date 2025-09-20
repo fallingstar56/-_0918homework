@@ -51,12 +51,33 @@ df_owncourse.index += 1 # 院系课程的序号会从1开始而不是0
 #  main function to draw the page, code from here will rerun once something on page is changing, 
 #  statements executed will show their content on the page
 if __name__ == "__main__":
-
+    
     st.set_page_config(
         page_title="My Tsinghua Homepage", # 页面的名字
         page_icon="", # 页面图标的路径
         layout="wide", # 页面布局方式
     )
+
+    st.markdown(
+        """
+        <style>
+            .stApp {
+                background-color: #fff !important;
+            }
+            body, div, p, span, h1, h2, h3, h4, h5, h6, table, th, td {
+                color: #000 !important;
+            }
+            button, .stButton>button, .stDownloadButton>button {
+                background-color: #fff !important;
+            }
+            div.object-key-val {
+                background-color: #fff !important;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
     if "detail_index" not in st.session_state:
         st.session_state.detail_index = 0 # 初始化当前查看的课程序号为0，此时未查看任何一门课程的信息
 
@@ -82,13 +103,13 @@ if __name__ == "__main__":
             col2_2.markdown("**专业**：笃实书院")
             col2_1, col2_2 = st.columns(2)
             col2_1.markdown("**爱好**：编程 打篮球 拉小提琴")
-            col2_2.markdown("**梦想**：Life-Long Learning")
+            col2_2.markdown("**生日**：20070704")
             col2_1, col2_2 = st.columns(2)
             col2_1.markdown("**Tel**：18800660556")
             col2_2.markdown("**E-Mail**：xhy25@mails.tsinghua.edu.cn")
             col2_1, col2_2 = st.columns(2)
             col2_1.markdown("**地址**：北京市海淀区清华大学紫荆公寓7号楼")
-            col2_2.markdown("**座右铭**：自强不息，厚德载物")
+            col2_2.markdown("**我的github**： [fallingstar56](https://github.com/fallingstar56)")
 
         st.markdown(
             """
@@ -101,7 +122,7 @@ if __name__ == "__main__":
             box-shadow:0 2px 8px rgba(92,48,125,0.08);
             text-align:center;
             font-size:18px;
-            color:#333;
+            color:#000;
             ">
             大家好，我叫许瀚元，欢迎访问我的个人页面。我是清华大学笃实书院的五字班学生，<br>
             我对软件工程有浓厚的兴趣，我学习过包括C、C++、Java、Python等多种编程语言以及一些信息领域前沿技术。<br>
@@ -109,9 +130,9 @@ if __name__ == "__main__":
         </div>
         """,
         unsafe_allow_html=True
-)
+        )
         
-    center_col = st.columns([1, 0.25, 1])[1]
+    center_col = st.columns([2, 1, 2])[1]
     with center_col:
         st.image("data/thu.jpg", width=150)
 
